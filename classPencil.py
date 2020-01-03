@@ -7,6 +7,13 @@ class pencil:
         self.pointDurability = pointDurability
         self.leadLength = leadLength
         self.eraserDurability = eraserDurability
+
+        self.stackOfErasurePoints = [] #stack of points where pencil erased last
+        #MIGHT want to move this over to being something that pages keep track of rather than pencils
+        #this could be point of conversation during code review
+        #might switch pencils when writing on piece of paper! Important to be able to substitute
+        #but for now, for KISS implementation of pencil, let's keep it this way :)
+
         #default values if no parameters passed? Perhaps. Easy to add after input from code review
 
 
@@ -35,6 +42,10 @@ class pencil:
 
         whereToBeginErasing = paperToWriteOnto.find(reversedTextToErase) #find where text that needs to be erased occurs, then starting from that index out to the length of that text just replace with blanks.
         paperToWriteOnto = list(paperToWriteOnto)
+
+        #for use in editing text, add to the stack to see where the last erasure was so we know where to insert when that function is called
+        self.stackOfErasurePoints.append(len(paperToWriteOnto)-1-whereToBeginErasing)
+        #-1 index returns most recent erasure. instead of a stack and a list, could very well be an int of the last erasure. point of discussion, depends on requirements (do we want a history of erasures?)
 
         i = whereToBeginErasing
         j = 0
