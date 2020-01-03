@@ -42,13 +42,11 @@ class pencil:
 
             if (paperToWriteOnto[i] == " "):
                 pass
-            else:
+            elif (self.eraserDurability > 0):
                 self.eraserDurability -= 1
                 paperToWriteOnto[i] = " "
-                
             i+=1 #incrementer on the page of where the eraser is 
             j+=1 #incrementer on the phrase to erase, of where in that phrase we are
-
 
         return convertListOfCharsToString(paperToWriteOnto)[::-1] #convert list of chars into string then reverse it back to normal for perspective of pencil/writer
 

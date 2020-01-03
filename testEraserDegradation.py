@@ -4,11 +4,11 @@ import classPencil #(pointDurability, leadLength, eraserDurability)
 class testEraserDegradation(unittest.TestCase):
     
     def setUp(self):
-        self.ticonderoga = classPencil.pencil(100, 2, 6) #100 pt pencil of length 2 with eraser durability 5
+        self.ticonderoga = classPencil.pencil(100, 2, 3) #100 pt pencil of length 2 with eraser durability 5
         self.page1 = "" #a piece of paper to write on
 
     def test_ifPencilEraserIsDegradingAfterErasing(self):  #test to see if eraser is degrading per character (dont worry about whitespaces in this test)
-        textToErase = "World!"
+        textToErase = "World"
         self.page1 = self.ticonderoga.writeText("Hello, World", self.page1)
         self.page1 = self.ticonderoga.eraseText(textToErase, self.page1) 
         self.assertEqual(0, self.ticonderoga.eraserDurability)
@@ -17,7 +17,7 @@ class testEraserDegradation(unittest.TestCase):
         textToErase = "  "
         self.page1 = self.ticonderoga.writeText("Hello,  World", self.page1) #2 spaces now
         self.page1 = self.ticonderoga.eraseText(textToErase, self.page1) 
-        self.assertEqual(6, self.ticonderoga.eraserDurability) #should be same eraser durability as out of box
+        self.assertEqual(3, self.ticonderoga.eraserDurability) #should be same eraser durability as out of box
 
     def test_ifPencilEraserIsLimitedByItsDurability(self): #make sure if the eraser has been run down to 0, it cannot erase. test case right from kata github readme
         textToErase = "Bill"
