@@ -28,6 +28,12 @@ class testPointDegradation(unittest.TestCase):
         self.page1 = self.ticonderoga.writeText(textToWrite, self.page1) 
         self.assertEqual(2, self.ticonderoga.pointDurability) #should be 8 less durable than original pencil, so 10-8=2
 
+    def test_ifPencilWithDurability4WritesTextAsTex(self): #example directly from the kata readme on github
+
+        self.ticonderoga.pointDurability=4
+        textToWrite = "Text"
+        self.page1 = self.ticonderoga.writeText(textToWrite, self.page1) 
+        self.assertEqual("Tex", self.page1)
 
     #def tearDown(self):
     #   self.ticonderoga.dispose()
