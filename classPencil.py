@@ -43,8 +43,8 @@ class pencil:
         whereToBeginErasing = paperToWriteOnto.find(reversedTextToErase) #find where text that needs to be erased occurs, then starting from that index out to the length of that text just replace with blanks.
         paperToWriteOnto = list(paperToWriteOnto)
 
-        #for use in editing text, add to the stack to see where the last erasure was so we know where to insert when that function is called
-        self.stackOfErasurePoints.append(len(paperToWriteOnto)-1-whereToBeginErasing)
+
+        #for use in editing text, add last erase point to the stack to see where the last erasure was so we know where to insert when that function is called
         #-1 index returns most recent erasure. instead of a stack and a list, could very well be an int of the last erasure. point of discussion, depends on requirements (do we want a history of erasures?)
 
         i = whereToBeginErasing
@@ -52,8 +52,9 @@ class pencil:
         while (j < len(reversedTextToErase)): #replacing each char to be erased with a " "
 
             if (paperToWriteOnto[i] == " "):
-                pass
+                self.stackOfErasurePoints.append(len(paperToWriteOnto) - i - 1)
             elif (self.eraserDurability > 0):
+                self.stackOfErasurePoints.append(len(paperToWriteOnto) - i - 1)
                 self.eraserDurability -= 1
                 paperToWriteOnto[i] = " "
             else:
@@ -62,7 +63,6 @@ class pencil:
             j+=1 #incrementer on the phrase to erase, of where in that phrase we are
 
         return convertListOfCharsToString(paperToWriteOnto)[::-1] #convert list of chars into string then reverse it back to normal for perspective of pencil/writer
-
 
 
 
@@ -82,6 +82,8 @@ class pencil:
 
         return paperToWriteOnto
 
+
+    def editText(self, textToWrite, paperToWriteOnto): #kludge, as you can see variable names being kept similar to writeText, as i plan to merge the two. DRY!
 
 
 
