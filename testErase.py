@@ -15,6 +15,14 @@ class testErase(unittest.TestCase):
         self.page1 = self.ticonderoga.eraseText(textToErase, self.page1) 
         self.assertEqual("How much wood would a woodchuck chuck if a woodchuck could       wood?", self.page1)
 
+    def test_ifPencilErasesChuckTwice(self): #same test but erasing chuck a second time as in the kata readme
+        
+        textToErase = "chuck"
+        self.page1 = self.ticonderoga.writeText("How much wood would a woodchuck chuck if a woodchuck could chuck wood?", self.page1)
+        self.page1 = self.ticonderoga.eraseText(textToErase, self.page1) 
+        self.page1 = self.ticonderoga.eraseText(textToErase, self.page1) 
+        self.assertEqual("How much wood would a woodchuck chuck if a wood      could       wood?", self.page1)
+
 
     #def tearDown(self):
     #   self.ticonderoga.dispose()
