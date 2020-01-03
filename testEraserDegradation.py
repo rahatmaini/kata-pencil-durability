@@ -13,7 +13,11 @@ class testEraserDegradation(unittest.TestCase):
         self.page1 = self.ticonderoga.eraseText(textToErase, self.page1) 
         self.assertEqual(0, self.ticonderoga.eraserDurability)
 
-    #test to see if whitespace doesnt degrade
+    def test_ifWhitespaceDoesntCauseDegradation(self): #test to make sure whitespace doesnt degrade
+        textToErase = "  "
+        self.page1 = self.ticonderoga.writeText("Hello,  World", self.page1) #2 spaces now
+        self.page1 = self.ticonderoga.eraseText(textToErase, self.page1) 
+        self.assertEqual(6, self.ticonderoga.eraserDurability) #should be same eraser durability as out of box
 
     #def test_ifPencilEraserIsLimitedByItsDurability(self):  
 
