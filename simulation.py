@@ -9,31 +9,27 @@ def printPencilStats(pencil):
 
 
 ticonderoga = classPencil.pencil(30, 2, 10) #pencil with 20 pt durability, 2 length, and 10 eraser durability
-page = "This" #piece of paper that says "The" on it
+page = "How" #piece of paper that says "The" on it
 
 
 print ("Page currently reads: ", page)
 printPencilStats(ticonderoga)
 
 
-print ("Writing ' is a terrible'")
-page = ticonderoga.writeText(" is a terrible", page)
+print ("Writing ' do functions creak up?'")
+page = ticonderoga.writeText(" do functions creak up?", page)
+#hey look at that, special characters such as "?" were not specified as how much they degrade the pencil point by. Let's presume by 2 for the sake of the kata, could be easily fixed if requirements mandated it
 print ("It now reads: ", page)
 printPencilStats(ticonderoga)
 
 
-print ("Erasing 'terrible'")
-page = ticonderoga.eraseText("terrible", page)
+print ("Erasing 'creak'")
+page = ticonderoga.eraseText("creak", page)
 print ("It now reads: ", page)
 printPencilStats(ticonderoga)
 
-print ("Editing (through insertion) 'fantastic'")
-page = ticonderoga.editText("fantastic", page)
-print ("It now reads: ", page)
-printPencilStats(ticonderoga)
-
-print ("Writing ' Ouija board'")
-page = ticonderoga.writeText(" Ouija board", page)
+print ("Editing (through insertion) 'break'")
+page = ticonderoga.editText("break", page)
 print ("It now reads: ", page)
 printPencilStats(ticonderoga)
 
@@ -41,7 +37,9 @@ print ("Sharpening")
 ticonderoga.sharpen()
 printPencilStats(ticonderoga)
 
-print ("Writing 'ame for a car'")
-page = ticonderoga.writeText("", page)
+print ("Writing ' They stop calling each other'")
+page = ticonderoga.writeText(" They stop calling each other", page)
 print ("It now reads: ", page)
 printPencilStats(ticonderoga)
+
+
