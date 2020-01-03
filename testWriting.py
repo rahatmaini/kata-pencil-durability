@@ -14,13 +14,9 @@ class testWriting(unittest.TestCase):
 
     def test_ifPaperReflectsPreviousTextAsWellAsNewWriting(self): #pencil will ADD to the paper instead of overwriting
 
-        self.page1 = "Hello, World!"
-        self.page1 = self.ticonderoga.writeText("...and Goodbye, World!", self.page1)
-        self.assertEqual("Hello, World!...and Goodbye, World!", self.page1)
-
-
-
-
+        self.page1 = "She sells sea shells"
+        self.page1 = self.ticonderoga.writeText(" down by the sea shore", self.page1)
+        self.assertEqual("She sells sea shells down by the sea shore", self.page1)
 
 
 
