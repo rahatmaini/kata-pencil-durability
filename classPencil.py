@@ -85,6 +85,21 @@ class pencil:
 
     def editText(self, textToWrite, paperToWriteOnto): #kludge, as you can see variable names being kept similar to writeText, as i plan to merge the two. DRY!
 
+        allTheTextToInsert = list(textToWrite)
+        allTextOnPaper = list(paperToWriteOnto)
+
+        i = self.stackOfErasurePoints[-1] #where to start inserting
+        j = 0
+        while (j < len(textToWrite)): #not paying attention to the rules of pencil degradation and whatnot yet!!
+            allTextOnPaper[i] = allTheTextToInsert[j]
+            j+=1
+            i+=1
+        
+        return convertListOfCharsToString(allTextOnPaper)
+    
+
+
+
 
 
 
