@@ -4,7 +4,7 @@ import classPencil #(pointDurability, leadLength, eraserDurability)
 class testErase(unittest.TestCase):
     
     def setUp(self):
-        self.ticonderoga = classPencil.pencil(100, 2, 0) #100 pt pencil of length 2 with no eraser
+        self.ticonderoga = classPencil.pencil(100, 2, 100) #100 pt pencil of length 2 with 100 durability eraser
         self.page1 = "" #a piece of paper to write on
 
     def test_ifPencilErasesChuck(self): #from the kata readme, see if "chuck" is erased from "How much wood would a woodchuck chuck if a woodchuck could chuck wood?" and it reads "How much wood would a woodchuck chuck if a woodchuck could       wood?"
