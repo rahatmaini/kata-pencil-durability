@@ -69,34 +69,41 @@ class pencil:
 
     def writeText(self, textToWrite, paperToWriteOnto):
         
-        allTheText = list(textToWrite) #have a list of chars in the text to write
+        allTheTextToWrite = list(textToWrite) #have a list of chars in the text to write
 
-        for char in allTheText:
-            #as long as the pencil will be at 0 or more pointyness, we can write
-            #otherwise add a blank space instead of the character that was supposed to be added
-            if (self.pointDurability - returnWeightOfCharacterWritten(char) >= 0): 
-                self.pointDurability -= returnWeightOfCharacterWritten(char)
-                paperToWriteOnto += char
-            else:
-                paperToWriteOnto += " "
+        for char in allTheTextToWrite: #
+            paperToWriteOnto += self.returnTextToBeWritten(char)
 
         return paperToWriteOnto
 
 
-    def editText(self, textToWrite, paperToWriteOnto): #kludge, as you can see variable names being kept similar to writeText, as i plan to merge the two. DRY!
+    def editText(self, textToWrite, paperToWriteOnto):
 
         allTheTextToInsert = list(textToWrite)
         allTextOnPaper = list(paperToWriteOnto)
 
         i = self.stackOfErasurePoints[-1] #where to start inserting
         j = 0
-        while (j < len(textToWrite)): #not paying attention to the rules of pencil degradation and whatnot yet!!
-            allTextOnPaper[i] = allTheTextToInsert[j]
+        while (j < len(textToWrite)):
+            allTextOnPaper[i] = self.returnTextToBeWritten(allTheTextToInsert[j])
             j+=1
             i+=1
         
         return convertListOfCharsToString(allTextOnPaper)
     
+
+    def returnTextToBeWritten(self, char): #handles durability checking, decrementing, and returns the char to write (whether a blank or a char)
+    #DRY! this simplifies writing and editing text
+    
+        #as long as the pencil will be at 0 or more pointyness, we can write
+        #otherwise add a blank space instead of the character that was supposed to be added
+
+        if (self.pointDurability - returnWeightOfCharacterWritten(char) >= 0): 
+            self.pointDurability -= returnWeightOfCharacterWritten(char)
+            return char
+        else:
+            return " "
+
 
 
 
