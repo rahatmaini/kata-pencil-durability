@@ -3,16 +3,22 @@ class pencil:
     #to initialize a pencil with its length and component durabilities
     #pass in these values as parameters during object initialization
     def __init__(self, pointDurability, leadLength, eraserDurability):
+        self.originalPointDurability = pointDurability #check this to see to which durability to sharpen pencil to
         self.pointDurability = pointDurability
         self.leadLength = leadLength
         self.eraserDurability = eraserDurability
-        #TODO default values?
+        #default values if no parameters passed? Perhaps. Easy to add after input from code review
 
     def sharpen():
-        #look at length of pencil:
-        #IF length>0 THEN restore original pointDurability AND decrement leadLength
-        #ELSE do nothing, as sharpening no longer restores point durability
-        #TODO need to store original manufacturer pointDurability somewhere, if going to decrement it when writing
+
+        if (self.leadLength > 0): #if there is pencil left, sharpen it (reduce length, restore pt durability)
+            self.pointDurability = self.originalPointDurability
+            self.leadLength-=1
+            return True #could just pass (do nothing), but this might be helpful for testing
+
+        else:
+            return False 
+
 
     def eraseText(textToErase):
         #undecided if better to implement as pencil1.eraseText("blah") or to call an erase function, passing the pencil object into it
