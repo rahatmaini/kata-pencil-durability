@@ -1,4 +1,8 @@
 import unittest
+
+import sys
+sys.path.append("..")
+
 import classPencil #(pointDurability, leadLength, eraserDurability)
 
 class testEraserDegradation(unittest.TestCase):

@@ -52,9 +52,9 @@ class pencil:
         while (j < len(reversedTextToErase)): #replacing each char to be erased with a " "
 
             if (paperToWriteOnto[i] == " "):
-                self.stackOfErasurePoints.append(len(paperToWriteOnto) - i - 1)
+                self.stackOfErasurePoints.append(len(paperToWriteOnto) - i - 1) #how to not repeat myself?
             elif (self.eraserDurability > 0):
-                self.stackOfErasurePoints.append(len(paperToWriteOnto) - i - 1)
+                self.stackOfErasurePoints.append(len(paperToWriteOnto) - i - 1) #repeat statement, would like to architect this logic better. please guide me, dear kata reviewer
                 self.eraserDurability -= 1
                 paperToWriteOnto[i] = " "
             else:
@@ -85,7 +85,12 @@ class pencil:
         i = self.stackOfErasurePoints[-1] #where to start inserting
         j = 0
         while (j < len(textToWrite)):
-            allTextOnPaper[i] = self.returnTextToBeWritten(allTheTextToInsert[j])
+            if (allTextOnPaper[i] == " "):
+                allTextOnPaper[i] = self.returnTextToBeWritten(allTheTextToInsert[j])
+            else:
+                #assuming a collision results in chickenscratch looking "@" but the writting is still there, capital or lowercase, and the pencil tip is degraded accordingly 
+                if (self.returnTextToBeWritten(allTheTextToInsert[j]) != " "): #call helper func
+                    allTextOnPaper[i] = "@" 
             j+=1
             i+=1
         
