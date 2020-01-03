@@ -19,7 +19,11 @@ class testEraserDegradation(unittest.TestCase):
         self.page1 = self.ticonderoga.eraseText(textToErase, self.page1) 
         self.assertEqual(6, self.ticonderoga.eraserDurability) #should be same eraser durability as out of box
 
-    #def test_ifPencilEraserIsLimitedByItsDurability(self):  
+    def test_ifPencilEraserIsLimitedByItsDurability(self): #make sure if the eraser has been run down to 0, it cannot erase. test case right from kata github readme
+        textToErase = "Bill"
+        self.page1 = self.ticonderoga.writeText("Buffalo Bill", self.page1) #2 spaces now
+        self.page1 = self.ticonderoga.eraseText(textToErase, self.page1) 
+        self.assertEqual("Buffalo B   ", self.page1)
 
     
 
