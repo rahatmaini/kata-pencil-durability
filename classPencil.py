@@ -9,7 +9,7 @@ class pencil:
         self.eraserDurability = eraserDurability
         #default values if no parameters passed? Perhaps. Easy to add after input from code review
 
-    def sharpen():
+    def sharpen(self):
 
         if (self.leadLength > 0): #if there is pencil left, sharpen it (reduce length, restore pt durability)
             self.pointDurability = self.originalPointDurability
@@ -20,7 +20,7 @@ class pencil:
             return False 
 
 
-    def eraseText(textToErase):
+    #def eraseText(self, textToErase):
         #undecided if better to implement as pencil1.eraseText("blah") or to call an erase function, passing the pencil object into it
 
         #needs to erase last occurence, so backwards string indexing
@@ -29,7 +29,7 @@ class pencil:
 
         #IDEA turn string into list of characters, iterate through using for/in loop, make decisions accordingly
 
-    def writeText(textToWrite):
+    #def writeText(self, textToWrite):
         #same issue as above of indecision
         
         #just append parameter (string) to paper.
