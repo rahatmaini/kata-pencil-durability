@@ -13,6 +13,11 @@ class testPointDegradation(unittest.TestCase):
         self.page1 = self.ticonderoga.writeText(textToWrite, self.page1) 
         self.assertEqual(brandNewPencilDurability-len(textToWrite), self.ticonderoga.pointDurability)
 
+    def test_ifPencilDegradesAfterWritingBlanks(self): #spaces should not affect pencil durability, no degradation
+        textToWrite = "    "
+        brandNewPencilDurability = self.ticonderoga.originalPointDurability
+        self.page1 = self.ticonderoga.writeText(textToWrite, self.page1) 
+        self.assertEqual(10, self.ticonderoga.pointDurability)
 
 
     #def tearDown(self):

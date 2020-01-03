@@ -30,7 +30,16 @@ class pencil:
         #IDEA turn string into list of characters, iterate through using for/in loop, make decisions accordingly
 
     def writeText(self, textToWrite, paperToWriteOnto):
-        paperToWriteOnto += textToWrite
+        
+        allTheText = list(textToWrite) #have a list of chars in the text to write
+
+        for char in allTheText:
+            if (char != " "):
+                self.pointDurability -= 1
+            else:
+                pass
+            paperToWriteOnto += char
+            
         return paperToWriteOnto
 
 
