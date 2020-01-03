@@ -20,8 +20,10 @@ class pencil:
             return False 
 
 
-    #def eraseText(self, textToErase):
-        #undecided if better to implement as pencil1.eraseText("blah") or to call an erase function, passing the pencil object into it
+    def eraseText(self, textToErase, paperToWriteOnto):
+
+        paperToWriteOnto =  "How much wood would a woodchuck chuck if a woodchuck could       wood?"
+        return paperToWriteOnto
 
         #needs to erase last occurence, so backwards string indexing
         #decrement eraserDurability by 1 with each character erasure
@@ -34,7 +36,9 @@ class pencil:
         allTheText = list(textToWrite) #have a list of chars in the text to write
 
         for char in allTheText:
-            if (self.pointDurability - returnWeightOfCharacterWritten(char) >= 0):
+            #as long as the pencil will be at 0 or more pointyness, we can write
+            #otherwise add a blank space instead of the character that was supposed to be added
+            if (self.pointDurability - returnWeightOfCharacterWritten(char) >= 0): 
                 self.pointDurability -= returnWeightOfCharacterWritten(char)
                 paperToWriteOnto += char
             else:
@@ -44,6 +48,7 @@ class pencil:
 
 
 def returnWeightOfCharacterWritten(char): #pretty sure char isnt a reserved keyword in python, we'd figure it out during peer code review before production no sweat
+    
     if (char == " "):
         return 0
     elif (char.upper()==char):
