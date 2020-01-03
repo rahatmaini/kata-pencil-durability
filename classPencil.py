@@ -40,6 +40,7 @@ class pencil:
         j = 0
         while (j < len(reversedTextToErase)): #replacing each char to be erased with a " "
             paperToWriteOnto[i] = " "
+            self.eraserDurability -= 1
             i+=1 #incrementer on the page of where the eraser is 
             j+=1 #incrementer on the phrase to erase, of where in that phrase we are
 
