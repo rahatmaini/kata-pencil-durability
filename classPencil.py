@@ -34,8 +34,11 @@ class pencil:
         allTheText = list(textToWrite) #have a list of chars in the text to write
 
         for char in allTheText:
-            self.pointDurability -= returnWeightOfCharacterWritten(char)
-            paperToWriteOnto += char
+            if (self.pointDurability - returnWeightOfCharacterWritten(char) >= 0):
+                self.pointDurability -= returnWeightOfCharacterWritten(char)
+                paperToWriteOnto += char
+            else:
+                paperToWriteOnto += " "
 
         return paperToWriteOnto
 

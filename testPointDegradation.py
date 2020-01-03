@@ -33,7 +33,7 @@ class testPointDegradation(unittest.TestCase):
         self.ticonderoga.pointDurability=4
         textToWrite = "Text"
         self.page1 = self.ticonderoga.writeText(textToWrite, self.page1) 
-        self.assertEqual("Tex", self.page1)
+        self.assertEqual("Tex ", self.page1)
 
     #def tearDown(self):
     #   self.ticonderoga.dispose()
