@@ -93,6 +93,11 @@ class pencil:
                     allTextOnPaper[i] = "@" 
             j+=1
             i+=1
+
+            #There is a problem if you erase and want to edit something into the very end of the page. This is a fix for that (essentially passes the rest of what needs to be added to the writeText function to be appended as normal). Caught this bug during refactoring
+            if (i>=len(allTextOnPaper)):
+                paperToWriteOnto = convertListOfCharsToString(allTextOnPaper)
+                return self.writeText(convertListOfCharsToString(allTheTextToInsert[j:]),paperToWriteOnto)
         
         return convertListOfCharsToString(allTextOnPaper)
     
