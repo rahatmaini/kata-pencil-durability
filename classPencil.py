@@ -29,10 +29,9 @@ class pencil:
 
         #IDEA turn string into list of characters, iterate through using for/in loop, make decisions accordingly
 
-    #def writeText(self, textToWrite):
-        #same issue as above of indecision
-        
-        #just append parameter (string) to paper.
+    def writeText(self, textToWrite, paperToWriteOnto):
+        paperToWriteOnto = "Hello, World!"
+        return paperToWriteOnto
 
 
     
