@@ -17,6 +17,15 @@ class testEditing(unittest.TestCase):
         self.page1 = self.ticonderoga.editText("onion", self.page1)
         self.assertEqual("An onion a day keeps the doctor away", self.page1)
 
+    def test_checkTextCollisions(self): #test to see if new text is longer than allocated whitespace, then collisions result in "@"
+        textToInsert = "artichoke"
+        textToErase = "apple"
+
+        self.page1 = self.ticonderoga.writeText("An apple a day keeps the doctor away", self.page1)
+        self.page1 = self.ticonderoga.eraseText(textToErase, self.page1) 
+
+        self.page1 = self.ticonderoga.editText("artichoke", self.page1)
+        self.assertEqual("An artich@k@ay keeps the doctor away", self.page1)
   
 
     #def tearDown(self):
