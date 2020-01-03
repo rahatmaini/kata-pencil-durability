@@ -34,15 +34,16 @@ class pencil:
         allTheText = list(textToWrite) #have a list of chars in the text to write
 
         for char in allTheText:
-            if (char != " "):
-                self.pointDurability -= 1
-            else:
-                pass
+            self.pointDurability -= returnWeightOfCharacterWritten(char)
             paperToWriteOnto += char
-            
+
         return paperToWriteOnto
 
 
-    
-
-    
+def returnWeightOfCharacterWritten(char): #pretty sure char isnt a reserved keyword in python, we'd figure it out during peer code review before production no sweat
+    if (char == " "):
+        return 0
+    elif (char.upper()==char):
+        return 2
+    elif (char.lower()==char):
+        return 1
