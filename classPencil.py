@@ -22,14 +22,29 @@ class pencil:
 
     def eraseText(self, textToErase, paperToWriteOnto):
 
-        paperToWriteOnto =  "How much wood would a woodchuck chuck if a woodchuck could       wood?"
-        return paperToWriteOnto
+        reversedTextToErase = textToErase[::-1] #in order of erasing characters, you go reverse (k c u h c for chuck)
+        paperToWriteOnto = paperToWriteOnto[::-1] #from the perspective of the eraser, we see the page backwards first (think of it as right to left)
 
-        #needs to erase last occurence, so backwards string indexing
-        #decrement eraserDurability by 1 with each character erasure
-        #if eraserDurability==0, then stop erasing
+        #find where text that needs to be erased occurs, starting from that index out to the length of that text just replace with blanks. pencil will not try to erase words that dont exist, this is reasonable expectation
 
-        #IDEA turn string into list of characters, iterate through using for/in loop, make decisions accordingly
+        whereToBeginErasing = paperToWriteOnto.find(reversedTextToErase)
+        paperToWriteOnto = list(paperToWriteOnto)
+
+        i = whereToBeginErasing
+        j = 0
+        while (j < len(reversedTextToErase)):
+            paperToWriteOnto[i] = " "
+            print (convertListOfCharsToString(paperToWriteOnto)[::-1])
+            i+=1
+            j+=1
+
+        paperToWriteOnto = convertListOfCharsToString(paperToWriteOnto)
+
+
+
+
+        return paperToWriteOnto[::-1] #done erasing, reverse it back to normal for perspective of pencil/writer
+
 
     def writeText(self, textToWrite, paperToWriteOnto):
         
@@ -48,10 +63,16 @@ class pencil:
 
 
 def returnWeightOfCharacterWritten(char): #pretty sure char isnt a reserved keyword in python, we'd figure it out during peer code review before production no sweat
-    
+
     if (char == " "):
         return 0
     elif (char.upper()==char):
         return 2
     elif (char.lower()==char):
         return 1
+
+def convertListOfCharsToString(listOfChars):
+    s = ""
+    for char in listOfChars:
+        s+=char
+    return s
