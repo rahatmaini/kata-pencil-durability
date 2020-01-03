@@ -30,13 +30,10 @@ class pencil:
         #IDEA turn string into list of characters, iterate through using for/in loop, make decisions accordingly
 
     def writeText(self, textToWrite, paperToWriteOnto):
-        paperToWriteOnto = "Hello, World!"
+        paperToWriteOnto += textToWrite
         return paperToWriteOnto
 
 
     
-    #TODO editing text function
-
-    #undecided if "paper" will be a data structure or something (pages as objects?) or a simple string will suffice, as the real testing is of the pencil and its simulation, not pages of paper or the like
 
     
